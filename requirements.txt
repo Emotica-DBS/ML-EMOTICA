@@ -1,20 +1,26 @@
 # File ini berisi semua dependensi Python yang dibutuhkan untuk menjalankan
-# pipeline analisis sentimen.
+# pipeline analisis sentimen dan skrip prediksi.
 # Gunakan perintah berikut untuk menginstalnya:
 # pip install -r requirements.txt
 
-# Core Libraries
+# Core Machine Learning & Data Handling
 tensorflow==2.16.1
 pandas==2.2.2
 numpy==1.26.4
 scikit-learn==1.4.2
+joblib==1.4.2 # Untuk menyimpan/memuat LabelEncoder
 
 # NLP Libraries
 transformers[sentencepiece]==4.41.2
-Sastrawi==1.0.1
-nltk==3.8.1
+Sastrawi==1.0.1 # Untuk stemming Bahasa Indonesia
+nltk==3.8.1     # Untuk stopwords Bahasa Indonesia
 
-# Utility & Plotting
-requests==2.32.0
+# Utility & Performance
+swifter==1.4.0  # Untuk paralelisasi pandas apply (mempercepat preprocessing)
+tqdm==4.66.4    # Untuk progress bar (misalnya saat tokenisasi chunked)
+pyarrow==16.1.0 # Untuk membaca/menulis format file .feather (cache dataset bersih)
+
+# Plotting (Opsional, hanya jika ingin visualisasi Confusion Matrix di skrip training)
+# Jika Anda membutuhkan visualisasi, hapus tanda # di bawah ini.
 matplotlib==3.8.4
 seaborn==0.13.2
